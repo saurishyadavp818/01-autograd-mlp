@@ -1,0 +1,47 @@
+PROJECT 1: AUTOGRAD ENGINE + NEURAL NET FROM SCRATCH
+====================================================
+
+GOAL
+Understand backpropagation so well that you could rebuild PyTorch's core idea from a blank
+file.
+
+WHAT TO BUILD
+  - A Tensor/Value class that records operations and builds a computational graph.
+  - Reverse-mode automatic differentiation (backward pass) for +, -, *, /, matmul, ReLU/tanh/sigmoid, exp, log, sum, mean.
+  - An MLP (Linear layers + activations) trained on MNIST using only NumPy and your own engine.
+  - Optimizers written by you: SGD, SGD+Momentum, Adam.
+  - Softmax + cross-entropy loss with a numerically stable implementation.
+
+CONCEPTS YOU WILL USE
+  chain rule, computational graphs, backpropagation, matrix calculus, SGD / Momentum /
+  Adam, weight initialization (Xavier, He), softmax and cross-entropy, gradient checking
+
+STEP-BY-STEP PLAN
+  1. Derive backprop by hand on paper for a 2-layer network.
+  2. Build scalar autograd first (micrograd style), then extend to tensors.
+  3. Verify every gradient with numerical gradient checking (finite differences).
+  4. Compare your gradients and final accuracy against PyTorch on the same network.
+  5. Train on MNIST; reach 97%+ test accuracy with your MLP.
+  6. Write the README: what broke, what you learned.
+
+YOU ARE DONE WHEN
+  [ ] Gradient check passes (relative error < 1e-5) for every op.
+  [ ] Your engine matches PyTorch's gradients on a small network.
+  [ ] MNIST test accuracy 97%+.
+  [ ] You can rewrite the backward pass of Linear + ReLU + softmax-CE from memory.
+
+PAPERS (* = read fully; PDFs go in the papers/ folder)
+  * Learning representations by back-propagating errors (1986)  -> Not on arXiv. Search the title on Google Scholar / Nature.
+  * Adam: A Method for Stochastic Optimization  -> https://arxiv.org/abs/1412.6980
+    Delving Deep into Rectifiers (He initialization)  -> https://arxiv.org/abs/1502.01852
+    Understanding the difficulty of training deep feedforward neural networks (Glorot & Bengio, 2010)  -> Not on arXiv. Search the title; the PDF is hosted by JMLR/AISTATS.
+    Automatic Differentiation in Machine Learning: a Survey  -> https://arxiv.org/abs/1502.05767
+
+GROUND RULES (apply to every project)
+- Build the CORE piece yourself. No copy-pasting code for the thing you are trying to learn.
+- You may look up syntax, API signatures, formulas you already understood, and boilerplate (data loading, plotting, logging).
+- Try for 20-30 minutes before asking anyone about an error. Ask for hints, not solutions.
+- Compare your implementation to a reference only AFTER you wrote yours.
+- Multiple seeds, untouched test set, always a baseline, credit every source.
+- Keep a research log: hypothesis, experiment, result, surprise.
+- Reading method for each paper: pass 1 (abstract, figures, conclusion), pass 2 (method section with pen and paper), pass 3 (while implementing).
